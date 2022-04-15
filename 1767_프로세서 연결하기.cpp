@@ -1,80 +1,90 @@
-#include <iostream>
-#include <vector>
+/////////////////////////////////////////////////////////////////////////////////////////////
+// ê¸°ë³¸ ì œê³µì½”ë“œëŠ” ì„ì˜ ìˆ˜ì •í•´ë„ ê´€ê³„ ì—†ìŠµë‹ˆë‹¤. ë‹¨, ì…ì¶œë ¥ í¬ë§· ì£¼ì˜
+// ì•„ë˜ í‘œì¤€ ì…ì¶œë ¥ ì˜ˆì œ í•„ìš”ì‹œ ì°¸ê³ í•˜ì„¸ìš”.
+// í‘œì¤€ ì…ë ¥ ì˜ˆì œ
+// int a;
+// float b, c;
+// double d, e, f;
+// char g;
+// char var[256];
+// long long AB;
+// cin >> a;                            // int ë³€ìˆ˜ 1ê°œ ì…ë ¥ë°›ëŠ” ì˜ˆì œ
+// cin >> b >> c;                       // float ë³€ìˆ˜ 2ê°œ ì…ë ¥ë°›ëŠ” ì˜ˆì œ 
+// cin >> d >> e >> f;                  // double ë³€ìˆ˜ 3ê°œ ì…ë ¥ë°›ëŠ” ì˜ˆì œ
+// cin >> g;                            // char ë³€ìˆ˜ 1ê°œ ì…ë ¥ë°›ëŠ” ì˜ˆì œ
+// cin >> var;                          // ë¬¸ìì—´ 1ê°œ ì…ë ¥ë°›ëŠ” ì˜ˆì œ
+// cin >> AB;                           // long long ë³€ìˆ˜ 1ê°œ ì…ë ¥ë°›ëŠ” ì˜ˆì œ
+/////////////////////////////////////////////////////////////////////////////////////////////
+// í‘œì¤€ ì¶œë ¥ ì˜ˆì œ
+// int a = 0;                            
+// float b = 1.0, c = 2.0;               
+// double d = 3.0, e = 0.0; f = 1.0;
+// char g = 'b';
+// char var[256] = "ABCDEFG";
+// long long AB = 12345678901234567L;
+// cout << a;                           // int ë³€ìˆ˜ 1ê°œ ì¶œë ¥í•˜ëŠ” ì˜ˆì œ
+// cout << b << " " << c;               // float ë³€ìˆ˜ 2ê°œ ì¶œë ¥í•˜ëŠ” ì˜ˆì œ
+// cout << d << " " << e << " " << f;   // double ë³€ìˆ˜ 3ê°œ ì¶œë ¥í•˜ëŠ” ì˜ˆì œ
+// cout << g;                           // char ë³€ìˆ˜ 1ê°œ ì¶œë ¥í•˜ëŠ” ì˜ˆì œ
+// cout << var;                         // ë¬¸ìì—´ 1ê°œ ì¶œë ¥í•˜ëŠ” ì˜ˆì œ
+// cout << AB;                          // long long ë³€ìˆ˜ 1ê°œ ì¶œë ¥í•˜ëŠ” ì˜ˆì œ
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+#include<iostream>
+#include<vector>
 
 using namespace std;
 
-int connect;
-int result;
-int board[13][13]; // °İÀÚÆÇ
-vector<pair<int, int>> process; // ÇÁ·Î¼¼¼­
+int n, connect, result;
+int board[12][12];
+vector<pair<int, int>> process;
 
-//»óÇÏÁÂ¿ì
+// ìƒí•˜ì¢Œìš°
 const int dy[4] = { 1,-1,0,0 };
 const int dx[4] = { 0,0,-1,1 };
 
-// ÃÖ¼Ú°ª ¹İÈ¯
+// ìµœì†Œê°’ ë°˜í™˜
 int Min(int a, int b) {
 	return a < b ? a : b;
 }
 
-// ±íÀÌ¿ì¼± Å½»ö ÀÌ¿ëÇØ¼­ ¹éÆ®·¡Å· ½ÃÀÛ
-void DFS(int n, int level, int len, int cur_cnn) {
-	// Å»ÃâÁ¶°Ç
+void DFS(int len, int cur_cnn, int level) {
+	// íƒˆì¶œ ì¡°ê±´
 	if (level == process.size()) {
-		// ±æÀÌ º¯°æ Á¶°Ç
 		if (cur_cnn > connect) {
 			result = len;
 			connect = cur_cnn;
 		}
 
-		// °°À» °æ¿ì
 		else if (cur_cnn == connect)
 			result = Min(result, len);
-
 		return;
 	}
 
-	// ¼øÂ÷ÀûÀ¸·Î 4¹æÇâ Å½»ö
 	for (int dir = 0; dir < 4; ++dir) {
 		int ny = process[level].first;
 		int nx = process[level].second;
-		int cnt = 0; // Àü¼±
+		int cnt = 0; // ì „ì„ 
 
+		// ì „ì„  ì„¤ì¹˜
 		while (1) {
 			ny += dy[dir];
 			nx += dx[dir];
-			cnt++; // Àü¼± Ä«¿îÆ®
+			cnt++; // ì¹´ìš´íŠ¸
 
-			// Àü¼± ¶Ç´Â ÇÁ·Î¼¼¼­¿Í ¸¶ÁÖÄ£´Ù¸é
+			// ì „ì„  ë˜ëŠ” í”„ë¡œì„¸ì„œì™€ ë§Œë‚¨
 			if (board[ny][nx] == 1 || board[ny][nx] == 2) {
 				cnt = 0;
-				break; 
+				break;
 			}
 
-			// ºó °ø°£ÀÌÁö¸¸ ¿Ü°ûÀÎ °æ¿ì
-			if (board[ny][nx] == 0 && (ny == 1 || nx == 1 || nx == n || ny == n)) 
+			// ë¹ˆê³µê°„ì´ì§€ë§Œ ì™¸ê³½ì¸ ê²½ìš°
+			if (board[ny][nx] == 0 && (ny == 0 || nx == 0 || ny == n - 1 || nx == n - 1))
 				break;
 		}
 
-		// Àü¼±À» ¼³Ä¡ °¡´ÉÇÏ¸é
+		// ì„¤ì¹˜ê°€ ê°€ëŠ¥í•œ ê²½ìš°
 		if (cnt > 0) {
-			int ny = process[level].first;
-			int nx = process[level].second;
-			
-			while (1) {
-				ny += dy[dir];
-				nx += dx[dir];
-
-				// ¹üÀ§ ÃÊ°ú
-				if (ny < 1 || nx < 1 || nx > n || ny > n) 
-					break;
-
-				board[ny][nx] = 2; // Àü¼± Ã³¸®
-			}
-
-			// È£Ãâ
-			DFS(n, level + 1, len + cnt, cur_cnn + 1);
-			// ¹éÆ®·¡Å·À» À§ÇØ
 			ny = process[level].first;
 			nx = process[level].second;
 
@@ -82,61 +92,89 @@ void DFS(int n, int level, int len, int cur_cnn) {
 				ny += dy[dir];
 				nx += dx[dir];
 
-				// ¹üÀ§ ÃÊ°ú
-				if (ny < 1 || nx < 1 || nx > n || ny > n)
+				// ë²”ìœ„ì´ˆê³¼
+				if (ny < 0 || nx < 0 || ny >= n || nx >= n)
 					break;
 
-				board[ny][nx] = 0; // ºó Ä­ Ã³¸®
+				board[ny][nx] = 2;
+			}
+
+			DFS(len + cnt, cur_cnn + 1, level + 1);
+			ny = process[level].first;
+			nx = process[level].second;
+
+			while (1) {
+				ny += dy[dir];
+				nx += dx[dir];
+
+				// ë²”ìœ„ì´ˆê³¼
+				if (ny < 0 || nx < 0 || ny >= n || nx >= n)
+					break;
+
+				board[ny][nx] = 0;
 			}
 		}
+
 	}
 
-	//ÀÌ¹ø¿£ »ı·«ÇÑ °Í È£Ãâ
-	DFS(n, level + 1, len, cur_cnn);
-
+	// ì´ë²ˆì—” ìƒëµí•œ ê²ƒ í˜¸ì¶œ
+	DFS(len, cur_cnn, level + 1);
 	return;
 }
 
-int solution(int n) {
+int solution(void) {
 	int answer = 0;
+	result = 1e9;
+	connect = 0; // ì´ˆê¸°í™”
+	process.clear(); // ì‹œì‘ì „ ë¹„ìš°ê¸°
 
-	process.clear(); // ºñ¿ì±â
-	//¿Ü°¢Àº ÇÁ·Î¼¼¼­¸¦ ¹«½ÃÇÏ°í ÇÁ·Î¼¼¼­ À§Ä¡ È®ÀÎ
-	for (int i = 1; i <= n; ++i) {
-		for (int j = 1; j <= n; ++j) {
-			if (board[i][j] == 1) { // ÇÁ·Î¼¼¼­ ¹ß°ß
-				if (i == 1 || j == n || i == n || j == 1)
-					continue;
-				process.push_back({ i,j });
-			}
+	// ê°€ì¥ ìë¦¬ ì œì™¸
+	for (int i = 1; i < n - 1; ++i) {
+		for (int j = 1; j < n - 1; ++j) {
+			if (board[i][j] == 1)
+				process.push_back({ i,j }); // ì¢Œí‘œ
 		}
 	}
 
-	connect = 0; // ÃÊ±âÈ­
-	result = 0x7fffffff; // ÃÖ¼Ò¸¦ À§ÇÑ
-	DFS(n, 0, 0, 0);
+	// ë°±íŠ¸ë˜í‚¹ ì‹œì‘
+	DFS(0, 0, 0);
 	answer = result;
 	return answer;
 }
 
-int main(int argc, char** argv) {
+int main(int argc, char** argv)
+{
 	int test_case;
 	int T;
-
+	/*
+	   ì•„ë˜ì˜ freopen í•¨ìˆ˜ëŠ” input.txt ë¥¼ read only í˜•ì‹ìœ¼ë¡œ ì—° í›„,
+	   ì•ìœ¼ë¡œ í‘œì¤€ ì…ë ¥(í‚¤ë³´ë“œ) ëŒ€ì‹  input.txt íŒŒì¼ë¡œë¶€í„° ì½ì–´ì˜¤ê² ë‹¤ëŠ” ì˜ë¯¸ì˜ ì½”ë“œì…ë‹ˆë‹¤.
+	   //ì—¬ëŸ¬ë¶„ì´ ì‘ì„±í•œ ì½”ë“œë¥¼ í…ŒìŠ¤íŠ¸ í•  ë•Œ, í¸ì˜ë¥¼ ìœ„í•´ì„œ input.txtì— ì…ë ¥ì„ ì €ì¥í•œ í›„,
+	   freopen í•¨ìˆ˜ë¥¼ ì´ìš©í•˜ë©´ ì´í›„ cin ì„ ìˆ˜í–‰í•  ë•Œ í‘œì¤€ ì…ë ¥ ëŒ€ì‹  íŒŒì¼ë¡œë¶€í„° ì…ë ¥ì„ ë°›ì•„ì˜¬ ìˆ˜ ìˆìŠµë‹ˆë‹¤.
+	   ë”°ë¼ì„œ í…ŒìŠ¤íŠ¸ë¥¼ ìˆ˜í–‰í•  ë•Œì—ëŠ” ì•„ë˜ ì£¼ì„ì„ ì§€ìš°ê³  ì´ í•¨ìˆ˜ë¥¼ ì‚¬ìš©í•˜ì…”ë„ ì¢‹ìŠµë‹ˆë‹¤.
+	   freopen í•¨ìˆ˜ë¥¼ ì‚¬ìš©í•˜ê¸° ìœ„í•´ì„œëŠ” #include <cstdio>, í˜¹ì€ #include <stdio.h> ê°€ í•„ìš”í•©ë‹ˆë‹¤.
+	   ë‹¨, ì±„ì ì„ ìœ„í•´ ì½”ë“œë¥¼ ì œì¶œí•˜ì‹¤ ë•Œì—ëŠ” ë°˜ë“œì‹œ freopen í•¨ìˆ˜ë¥¼ ì§€ìš°ê±°ë‚˜ ì£¼ì„ ì²˜ë¦¬ í•˜ì…”ì•¼ í•©ë‹ˆë‹¤.
+	*/
+	//freopen("input.txt", "r", stdin);
 	cin >> T;
-	// ¿©·¯ °³ÀÇ Å×½ºÆ® ÄÉÀÌ½º°¡ ÁÖ¾îÁö¹Ç·Î, °¢°¢À» Ã³¸®ÇÕ´Ï´Ù.
-	for (test_case = 1; test_case <= T; ++test_case) {
-		int n;
+	/*
+	   ì—¬ëŸ¬ ê°œì˜ í…ŒìŠ¤íŠ¸ ì¼€ì´ìŠ¤ê°€ ì£¼ì–´ì§€ë¯€ë¡œ, ê°ê°ì„ ì²˜ë¦¬í•©ë‹ˆë‹¤.
+	*/
+	for (test_case = 1; test_case <= T; ++test_case)
+	{
 
+		/////////////////////////////////////////////////////////////////////////////////////////////
 		cin >> n;
-		for (int i = 1; i <= n; ++i) {
-			for (int j = 1; j <= n; ++j)
+		for (int i = 0; i < n; ++i) {
+			for (int j = 0; j < n; ++j)
 				cin >> board[i][j];
 		}
-
-		// ´ä¾È Ãâ·Â
-		int ret = solution(n);
+	
+		int ret = solution();
 		cout << '#' << test_case << ' ' << ret << '\n';
+		/////////////////////////////////////////////////////////////////////////////////////////////
+
+
 	}
-	return 0; // Á¤»óÁ¾·á½Ã ¹İµå½Ã 0À» ¸®ÅÏÇØ¾ßÇÕ´Ï´Ù.
+	return 0;//ì •ìƒì¢…ë£Œì‹œ ë°˜ë“œì‹œ 0ì„ ë¦¬í„´í•´ì•¼í•©ë‹ˆë‹¤.
 }
