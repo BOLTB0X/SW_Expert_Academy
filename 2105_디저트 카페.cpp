@@ -1,66 +1,74 @@
 /////////////////////////////////////////////////////////////////////////////////////////////
-// ±âº» Á¦°øÄÚµå´Â ÀÓÀÇ ¼öÁ¤ÇØµµ °ü°è ¾ø½À´Ï´Ù. ´Ü, ÀÔÃâ·Â Æ÷¸Ë ÁÖÀÇ
-// ¾Æ·¡ Ç¥ÁØ ÀÔÃâ·Â ¿¹Á¦ ÇÊ¿ä½Ã Âü°íÇÏ¼¼¿ä.
-// Ç¥ÁØ ÀÔ·Â ¿¹Á¦
+// ê¸°ë³¸ ì œê³µì½”ë“œëŠ” ì„ì˜ ìˆ˜ì •í•´ë„ ê´€ê³„ ì—†ìŠµë‹ˆë‹¤. ë‹¨, ì…ì¶œë ¥ í¬ë§· ì£¼ì˜
+// ì•„ë˜ í‘œì¤€ ì…ì¶œë ¥ ì˜ˆì œ í•„ìš”ì‹œ ì°¸ê³ í•˜ì„¸ìš”.
+// í‘œì¤€ ì…ë ¥ ì˜ˆì œ
 // int a;
 // float b, c;
 // double d, e, f;
 // char g;
 // char var[256];
 // long long AB;
-// cin >> a;                            // int º¯¼ö 1°³ ÀÔ·Â¹Ş´Â ¿¹Á¦
-// cin >> b >> c;                       // float º¯¼ö 2°³ ÀÔ·Â¹Ş´Â ¿¹Á¦ 
-// cin >> d >> e >> f;                  // double º¯¼ö 3°³ ÀÔ·Â¹Ş´Â ¿¹Á¦
-// cin >> g;                            // char º¯¼ö 1°³ ÀÔ·Â¹Ş´Â ¿¹Á¦
-// cin >> var;                          // ¹®ÀÚ¿­ 1°³ ÀÔ·Â¹Ş´Â ¿¹Á¦
-// cin >> AB;                           // long long º¯¼ö 1°³ ÀÔ·Â¹Ş´Â ¿¹Á¦
+// cin >> a;                            // int ë³€ìˆ˜ 1ê°œ ì…ë ¥ë°›ëŠ” ì˜ˆì œ
+// cin >> b >> c;                       // float ë³€ìˆ˜ 2ê°œ ì…ë ¥ë°›ëŠ” ì˜ˆì œ 
+// cin >> d >> e >> f;                  // double ë³€ìˆ˜ 3ê°œ ì…ë ¥ë°›ëŠ” ì˜ˆì œ
+// cin >> g;                            // char ë³€ìˆ˜ 1ê°œ ì…ë ¥ë°›ëŠ” ì˜ˆì œ
+// cin >> var;                          // ë¬¸ìì—´ 1ê°œ ì…ë ¥ë°›ëŠ” ì˜ˆì œ
+// cin >> AB;                           // long long ë³€ìˆ˜ 1ê°œ ì…ë ¥ë°›ëŠ” ì˜ˆì œ
 /////////////////////////////////////////////////////////////////////////////////////////////
-// Ç¥ÁØ Ãâ·Â ¿¹Á¦
+// í‘œì¤€ ì¶œë ¥ ì˜ˆì œ
 // int a = 0;                            
 // float b = 1.0, c = 2.0;               
 // double d = 3.0, e = 0.0; f = 1.0;
 // char g = 'b';
 // char var[256] = "ABCDEFG";
 // long long AB = 12345678901234567L;
-// cout << a;                           // int º¯¼ö 1°³ Ãâ·ÂÇÏ´Â ¿¹Á¦
-// cout << b << " " << c;               // float º¯¼ö 2°³ Ãâ·ÂÇÏ´Â ¿¹Á¦
-// cout << d << " " << e << " " << f;   // double º¯¼ö 3°³ Ãâ·ÂÇÏ´Â ¿¹Á¦
-// cout << g;                           // char º¯¼ö 1°³ Ãâ·ÂÇÏ´Â ¿¹Á¦
-// cout << var;                         // ¹®ÀÚ¿­ 1°³ Ãâ·ÂÇÏ´Â ¿¹Á¦
-// cout << AB;                          // long long º¯¼ö 1°³ Ãâ·ÂÇÏ´Â ¿¹Á¦
+// cout << a;                           // int ë³€ìˆ˜ 1ê°œ ì¶œë ¥í•˜ëŠ” ì˜ˆì œ
+// cout << b << " " << c;               // float ë³€ìˆ˜ 2ê°œ ì¶œë ¥í•˜ëŠ” ì˜ˆì œ
+// cout << d << " " << e << " " << f;   // double ë³€ìˆ˜ 3ê°œ ì¶œë ¥í•˜ëŠ” ì˜ˆì œ
+// cout << g;                           // char ë³€ìˆ˜ 1ê°œ ì¶œë ¥í•˜ëŠ” ì˜ˆì œ
+// cout << var;                         // ë¬¸ìì—´ 1ê°œ ì¶œë ¥í•˜ëŠ” ì˜ˆì œ
+// cout << AB;                          // long long ë³€ìˆ˜ 1ê°œ ì¶œë ¥í•˜ëŠ” ì˜ˆì œ
 /////////////////////////////////////////////////////////////////////////////////////////////
-
+#define _CRT_SECURE_NO_DEPRECATE
 #include<iostream>
-#include<cstring>
+#include<cstring> 
 
 using namespace std;
 
 int n, result;
 int board[20][20];
-bool visited[20][20];
-bool number[101];
+bool visited[20][20]; // ë°©ë¬¸ë¦¬ìŠ¤íŠ¸
+bool numbers[101]; // ë””ì €íŠ¸ ì¢…ë¥˜
 
-// ´ë°¢¼±À¸·Î
-const int dy[4] = {-1,-1, 1,1};
+// ë§ˆë¦„ëª¨ ë°©í–¥
+const int dy[4] = { -1,-1,1,1 };
 const int dx[4] = { -1,1,-1,1 };
 
 int Max(int a, int b) {
 	return a > b ? a : b;
 }
 
-// ¹éÆ®·¡Å·
-void DFS(int y, int x, int sy, int sx, int d, int line, int level) {
-	// Å»Ãâ Á¶°Ç
-	if (line > 4)
+// ë²”ìœ„íŒë‹¨
+bool in_Range(int y, int x) {
+	return y >= 0 && x >= 0 && y < n && x < n;
+}
+
+// ê¹Šì´ìš°ì„ íƒìƒ‰
+void DFS(int cy, int cx, int sy, int sx, int d, int cnt, int level) {
+	// ë§ˆì§€ë§‰ì€ sy, sxì— ê°€ì•¼í•˜ë¯€ë¡œ
+	if (cnt > 4)
 		return;
 
 	for (int dir = 0; dir < 4; ++dir) {
-		int ny = y + dy[dir];
-		int nx = x + dx[dir];
+		int ny = cy + dy[dir];
+		int nx = cx + dx[dir];
 
-		if (ny >= 0 && nx >= 0 && ny < n && nx < n) {
-			if (visited[ny][nx] == 1) {
-				if (line >= 3 && level >= 4) {
+		// ë²”ìœ„ ë‚´
+		if (in_Range(ny, nx)) {
+			// ë°©ë¬¸í•œ ê³³ì´ë©´
+			if (visited[ny][nx]) {
+				// ëŒì•„ì˜¬ë–„ê°€ ë˜ì—ˆìœ¼ë©´
+				if (cnt >= 3 && level >= 4) {
 					if (ny == sy && nx == sx) {
 						result = Max(result, level);
 						return;
@@ -68,17 +76,20 @@ void DFS(int y, int x, int sy, int sx, int d, int line, int level) {
 				}
 			}
 
+			// ë¯¸ë°©ë¬¸ì´ë©´
 			else {
-				if (!number[board[ny][nx]]) {
+				if (!numbers[board[ny][nx]]) {
 					visited[ny][nx] = 1;
-					number[board[ny][nx]] = 1;
+					numbers[board[ny][nx]] = 1;
 
+					// í˜„ì¬ ê°™ì€ ë°©í–¥ìœ¼ë¡œ ì§„í–‰í•˜ë©´
 					if (dir == d)
-						DFS(ny, nx, sy, sx, d, line, level + 1);
+						DFS(ny, nx, sy, sx, d, cnt, level + 1);
 					else
-						DFS(ny, nx, sy, sx, dir, line + 1, level + 1);
+						DFS(ny, nx, sy, sx, dir, cnt + 1, level + 1);
+
 					visited[ny][nx] = 0;
-					number[board[ny][nx]] = 0;
+					numbers[board[ny][nx]] = 0;
 				}
 			}
 		}
@@ -89,34 +100,36 @@ void DFS(int y, int x, int sy, int sx, int d, int line, int level) {
 
 int solution(void) {
 	int answer = 0;
-	// ÃÊ±âÈ­
+	// ì´ˆê¸°í™”
 	memset(visited, 0, sizeof(visited));
-	memset(number, 0, sizeof(number));
-	result = -1;
+	memset(numbers, 0, sizeof(numbers));
+	result = -1; 
 
-	// Å½»ö ½ÃÀÛ
+	// ë°±íŠ¸ë˜í‚¹
 	for (int i = 0; i < n; ++i) {
 		for (int j = 1; j < n - 1; ++j) {
 			visited[i][j] = 1;
-			number[board[i][j]] = 1;
+			numbers[board[i][j]] = 1;
 
 			int ny = i + dy[3];
 			int nx = j + dx[3];
 
-			if (ny>= 0 && nx >=0 && ny < n && nx < n) {
-				if (!number[board[ny][nx]]) {
-					visited[ny][nx] = 1;
-					number[board[ny][nx]] = 1;
-					DFS(ny, nx, i, j, 3, 1, 2);
-					visited[ny][nx] = 0;
-					number[board[ny][nx]] = 0;
-				}
+			// ì´ë™ì´ ê°€ëŠ¥í•˜ë‹¤ë©´
+			if (in_Range(ny, nx) && !numbers[board[ny][nx]]) {
+				visited[ny][nx] = 1;
+				numbers[board[ny][nx]] = 1;
+
+				DFS(ny, nx, i, j, 3, 1, 2);
+
+				visited[ny][nx] = 0;
+				numbers[board[ny][nx]] = 0;
 			}
+			
 			visited[i][j] = 0;
-			number[board[i][j]] = 0;
+			numbers[board[i][j]] = 0;
 		}
 	}
-	
+
 	answer = result;
 	return answer;
 }
@@ -126,33 +139,34 @@ int main(int argc, char** argv)
 	int test_case;
 	int T;
 	/*
-	   ¾Æ·¡ÀÇ freopen ÇÔ¼ö´Â input.txt ¸¦ read only Çü½ÄÀ¸·Î ¿¬ ÈÄ,
-	   ¾ÕÀ¸·Î Ç¥ÁØ ÀÔ·Â(Å°º¸µå) ´ë½Å input.txt ÆÄÀÏ·ÎºÎÅÍ ÀĞ¾î¿À°Ú´Ù´Â ÀÇ¹ÌÀÇ ÄÚµåÀÔ´Ï´Ù.
-	   //¿©·¯ºĞÀÌ ÀÛ¼ºÇÑ ÄÚµå¸¦ Å×½ºÆ® ÇÒ ¶§, ÆíÀÇ¸¦ À§ÇØ¼­ input.txt¿¡ ÀÔ·ÂÀ» ÀúÀåÇÑ ÈÄ,
-	   freopen ÇÔ¼ö¸¦ ÀÌ¿ëÇÏ¸é ÀÌÈÄ cin À» ¼öÇàÇÒ ¶§ Ç¥ÁØ ÀÔ·Â ´ë½Å ÆÄÀÏ·ÎºÎÅÍ ÀÔ·ÂÀ» ¹Ş¾Æ¿Ã ¼ö ÀÖ½À´Ï´Ù.
-	   µû¶ó¼­ Å×½ºÆ®¸¦ ¼öÇàÇÒ ¶§¿¡´Â ¾Æ·¡ ÁÖ¼®À» Áö¿ì°í ÀÌ ÇÔ¼ö¸¦ »ç¿ëÇÏ¼Åµµ ÁÁ½À´Ï´Ù.
-	   freopen ÇÔ¼ö¸¦ »ç¿ëÇÏ±â À§ÇØ¼­´Â #include <cstdio>, È¤Àº #include <stdio.h> °¡ ÇÊ¿äÇÕ´Ï´Ù.
-	   ´Ü, Ã¤Á¡À» À§ÇØ ÄÚµå¸¦ Á¦ÃâÇÏ½Ç ¶§¿¡´Â ¹İµå½Ã freopen ÇÔ¼ö¸¦ Áö¿ì°Å³ª ÁÖ¼® Ã³¸® ÇÏ¼Å¾ß ÇÕ´Ï´Ù.
+	   ì•„ë˜ì˜ freopen í•¨ìˆ˜ëŠ” input.txt ë¥¼ read only í˜•ì‹ìœ¼ë¡œ ì—° í›„,
+	   ì•ìœ¼ë¡œ í‘œì¤€ ì…ë ¥(í‚¤ë³´ë“œ) ëŒ€ì‹  input.txt íŒŒì¼ë¡œë¶€í„° ì½ì–´ì˜¤ê² ë‹¤ëŠ” ì˜ë¯¸ì˜ ì½”ë“œì…ë‹ˆë‹¤.
+	   //ì—¬ëŸ¬ë¶„ì´ ì‘ì„±í•œ ì½”ë“œë¥¼ í…ŒìŠ¤íŠ¸ í•  ë•Œ, í¸ì˜ë¥¼ ìœ„í•´ì„œ input.txtì— ì…ë ¥ì„ ì €ì¥í•œ í›„,
+	   freopen í•¨ìˆ˜ë¥¼ ì´ìš©í•˜ë©´ ì´í›„ cin ì„ ìˆ˜í–‰í•  ë•Œ í‘œì¤€ ì…ë ¥ ëŒ€ì‹  íŒŒì¼ë¡œë¶€í„° ì…ë ¥ì„ ë°›ì•„ì˜¬ ìˆ˜ ìˆìŠµë‹ˆë‹¤.
+	   ë”°ë¼ì„œ í…ŒìŠ¤íŠ¸ë¥¼ ìˆ˜í–‰í•  ë•Œì—ëŠ” ì•„ë˜ ì£¼ì„ì„ ì§€ìš°ê³  ì´ í•¨ìˆ˜ë¥¼ ì‚¬ìš©í•˜ì…”ë„ ì¢‹ìŠµë‹ˆë‹¤.
+	   freopen í•¨ìˆ˜ë¥¼ ì‚¬ìš©í•˜ê¸° ìœ„í•´ì„œëŠ” #include <cstdio>, í˜¹ì€ #include <stdio.h> ê°€ í•„ìš”í•©ë‹ˆë‹¤.
+	   ë‹¨, ì±„ì ì„ ìœ„í•´ ì½”ë“œë¥¼ ì œì¶œí•˜ì‹¤ ë•Œì—ëŠ” ë°˜ë“œì‹œ freopen í•¨ìˆ˜ë¥¼ ì§€ìš°ê±°ë‚˜ ì£¼ì„ ì²˜ë¦¬ í•˜ì…”ì•¼ í•©ë‹ˆë‹¤.
 	*/
-	//freopen("input.txt", "r", stdin);
+	freopen("input.txt", "r", stdin);
+	//freopen("output.txt", "w", stdout);
 	cin >> T;
 	/*
-	   ¿©·¯ °³ÀÇ Å×½ºÆ® ÄÉÀÌ½º°¡ ÁÖ¾îÁö¹Ç·Î, °¢°¢À» Ã³¸®ÇÕ´Ï´Ù.
+	   ì—¬ëŸ¬ ê°œì˜ í…ŒìŠ¤íŠ¸ ì¼€ì´ìŠ¤ê°€ ì£¼ì–´ì§€ë¯€ë¡œ, ê°ê°ì„ ì²˜ë¦¬í•©ë‹ˆë‹¤.
 	*/
 	for (test_case = 1; test_case <= T; ++test_case)
 	{
+
 		/////////////////////////////////////////////////////////////////////////////////////////////
 		cin >> n;
 		for (int i = 0; i < n; ++i) {
 			for (int j = 0; j < n; ++j)
 				cin >> board[i][j];
 		}
-
 		int ret = solution();
 		cout << '#' << test_case << ' ' << ret << '\n';
 		/////////////////////////////////////////////////////////////////////////////////////////////
 
 
 	}
-	return 0;//Á¤»óÁ¾·á½Ã ¹İµå½Ã 0À» ¸®ÅÏÇØ¾ßÇÕ´Ï´Ù.
+	return 0;//ì •ìƒì¢…ë£Œì‹œ ë°˜ë“œì‹œ 0ì„ ë¦¬í„´í•´ì•¼í•©ë‹ˆë‹¤.
 }
